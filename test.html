@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: linear-gradient(120deg, #3498db, #8e44ad); /* Gradient background */
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Full viewport height */
+      //height: 100vh; /* Full viewport height */
+      margin: 0;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      //width: 80%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    label {
+      display: block;
+      margin: 10px auto;
+      width: 100%;
+      font-size: 1em;
+      font-weight: bold; /* Bold font weight */
+      color: #2c3e50; /* Dark color for labels */
+      text-align: left;
+      //width: calc(100% - 20px);
+      //font-size: 16px;
+      //font-weight: bold; /* Bold font weight */
+      //color: #2c3e50; /* Dark color for labels */
+    }
+
+    select, input {
+       display: block;
+      margin: 5px auto;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for inputs */
+      color: #333;
+      font-size: 1em;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      outline: none;
+      margin-top: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  @media (max-width: 600px) {
+      label, select, input, button {
+        font-size: 0.9em;
+      }
+    }
+
+    @media (max-width: 400px) {
+      label, select, input, button {
+        font-size: 0.8em;
+      }
+    }
+  </style>
+  <script>
+    function populateSubOfficeDropdown(subDivision) {
+      var subOfficeDropdown = document.getElementById('subOfficeDropdown');
+      subOfficeDropdown.innerHTML = '';
+
+      switch (subDivision) {
+        case 'ASP Amreli Sub Division':
+          addOption(subOfficeDropdown, 'slct', 'Select' );
+          addOption(subOfficeDropdown, 'Amreli HO', 'Amreli HO' );
+          addOption(subOfficeDropdown, 'Babapur SO', 'Babapur SO' );
+          addOption(subOfficeDropdown, 'Chital SO', 'Chital SO' );
+          addOption(subOfficeDropdown, 'Kunkavav SO', 'Kunkavav SO' );
+          addOption(subOfficeDropdown, 'Lunidhar SO', 'Lunidhar SO' );
+          addOption(subOfficeDropdown, 'Mota ankadiya SO', 'Motaankadiya SO' );
+          addOption(subOfficeDropdown, 'Vadia SO', 'Vadia SO' );
+
+          break;
+        case 'Dhari Sub Division':
+          addOption(subOfficeDropdown, 'slct1', 'Select' );
+          addOption(subOfficeDropdown, 'Bagasra SO', 'Bagasra SO' );
+				  addOption(subOfficeDropdown, 'Bhader SO', 'Bhader SO' );
+				  addOption(subOfficeDropdown, 'Chalala SO', 'Chalala SO' );
+				  addOption(subOfficeDropdown, 'Dedan SO', 'Dedan SO' );
+				  addOption(subOfficeDropdown, 'Dhari SO', 'Dhari SO' );
+				  addOption(subOfficeDropdown, 'Khambha SO', 'Khambha SO' );
+				  addOption(subOfficeDropdown, 'Mota samdhiyala SO', 'Mota samdhiyala SO' );
+				  addOption(subOfficeDropdown, 'Vaghaniya SO', 'Vaghaniya SO' );
+
+          break;
+        case 'Lathi Sub Division':
+          addOption(subOfficeDropdown, 'slct2', 'Select' );
+          addOption(subOfficeDropdown, 'Babra SO', 'Babra SO' );
+					addOption(subOfficeDropdown, 'Chamaradi SO', 'Chamaradi SO' );
+					addOption(subOfficeDropdown, 'Chavand SO', 'Chavand SO' );
+					addOption(subOfficeDropdown, 'Damnagar SO', 'Damnagar SO' );
+					addOption(subOfficeDropdown, 'Lathi SO', 'Lathi SO' );
+					addOption(subOfficeDropdown, 'Liliya SO', 'Liliya SO' );
+
+          break;
+        case 'Rajula Sub Division':
+          addOption(subOfficeDropdown, 'slct3', 'Select' );
+          addOption(subOfficeDropdown, 'Badhada SO', 'Badhada SO' );
+					addOption(subOfficeDropdown, 'Dungar SO', 'Dungar SO' );
+					addOption(subOfficeDropdown, 'Jafrabad SO', 'Jafrabad SO' );
+					addOption(subOfficeDropdown, 'Jira SO', 'Jira SO' );
+					addOption(subOfficeDropdown, 'Rajula SO', 'Rajula SO' );
+					addOption(subOfficeDropdown, 'Savarkundla SO', 'Savarkundla SO' );
+					addOption(subOfficeDropdown, 'Timbi SO', 'Timbi SO' );
+					addOption(subOfficeDropdown, 'UTCL Kovaya SO', 'UTCL Kovaya SO' );
+					addOption(subOfficeDropdown, 'Vanda SO', 'Vanda SO' );
+					addOption(subOfficeDropdown, 'Vijpadi SO', 'Vijpadi SO' );
+
+          break;
+        default:
+          break;
+      }
+
+      // Update branch office dropdown based on selected sub office
+      onSubOfficeChange();
+    }
+
+    function populateBranchOfficeDropdown(subOffice) {
+      var branchOfficeDropdown = document.getElementById('branchOfficeDropdown');
+      branchOfficeDropdown.innerHTML = '';
+
+      switch (subOffice) {
+				case 'Amreli HO' :	
+          addOption(branchOfficeDropdown, 'slct4', 'Select' );
+					addOption(branchOfficeDropdown, 'Amrpur V BO', 'Amrpur V BO' );
+					addOption(branchOfficeDropdown, 'Bhandaria Nana BO', 'Bhandaria Nana BO' );
+					addOption(branchOfficeDropdown, 'Chakkargadh BO', 'Chakkargadh BO' );
+					addOption(branchOfficeDropdown, 'Chandgadh BO', 'Chandgadh BO' );
+					addOption(branchOfficeDropdown, 'Devaliya BO', 'Devaliya BO' );
+					addOption(branchOfficeDropdown, 'Fatepur BO', 'Fatepur BO' );
+					addOption(branchOfficeDropdown, 'Gokharvala mota BO', 'Gokharvala mota BO' );
+					addOption(branchOfficeDropdown, 'Ishavariya BO', 'Ishavariya BO' );
+					addOption(branchOfficeDropdown, 'Keriyanagas BO', 'Keriyanagas BO' );
+					addOption(branchOfficeDropdown, 'Lalavadar BO', 'Lalavadar BO' );
+					addOption(branchOfficeDropdown, 'Machyalanana BO', 'Machyalanana BO' );
+					addOption(branchOfficeDropdown, 'Mangvapal BO', 'Mangvapal BO' );
+					addOption(branchOfficeDropdown, 'Rangpur BO', 'Rangpur BO' );
+					addOption(branchOfficeDropdown, 'Sonariya BO', 'Sonariya BO' );
+					addOption(branchOfficeDropdown, 'Vathalpur K BO', 'Vathalpur K BO' );
+					break ;
+				case 'Babapur SO' :	
+          addOption(branchOfficeDropdown, 'slct5', 'Select' );
+					addOption(branchOfficeDropdown, 'Bhandriya Mota BO', 'Bhandriya Mota BO' );
+					addOption(branchOfficeDropdown, 'Gavdka BO', 'Gavdka BO' );
+					addOption(branchOfficeDropdown, 'Jaliya BO', 'Jaliya BO' );
+					addOption(branchOfficeDropdown, 'Pithvajal BO', 'Pithvajal BO' );
+					addOption(branchOfficeDropdown, 'Rajsathli BO', 'Rajsathli BO' );
+					addOption(branchOfficeDropdown, 'Sanosara BO', 'Sanosara BO' );
+					addOption(branchOfficeDropdown, 'Taraktalv BO', 'Taraktalv BO' );
+					addOption(branchOfficeDropdown, 'Tarvada BO', 'Tarvada BO' );
+					addOption(branchOfficeDropdown, 'Vadera BO', 'Vadera BO' );
+					addOption(branchOfficeDropdown, 'Vankiya BO', 'Vankiya BO' );
+					break ;
+				case 'Chital SO' :	
+          addOption(branchOfficeDropdown, 'slct6', 'Select' );
+					addOption(branchOfficeDropdown, 'Ankadianana BO', 'Ankadianana BO' );
+					addOption(branchOfficeDropdown, 'Ingorala2 BO', 'Ingorala2 BO' );
+					addOption(branchOfficeDropdown, 'Jasvantgadh BO', 'Jasvantgadh BO' );
+					addOption(branchOfficeDropdown, 'Monpur BO', 'Monpur BO' );
+					addOption(branchOfficeDropdown, 'RandhiyaBO', 'Randhiya BO' );
+					break ;
+				case 'Kunkavav SO' :	
+          addOption(branchOfficeDropdown, 'slct7', 'Select' );
+					addOption(branchOfficeDropdown, 'Amarpur BO', 'Amarpur BO' );
+					addOption(branchOfficeDropdown, 'Anida BO', 'Anida BO' );
+					addOption(branchOfficeDropdown, 'Barvalabavishi BO', 'Barvalabavishi BO' );
+					addOption(branchOfficeDropdown, 'Bhayavadar BO', 'Bhayavadar BO' );
+					addOption(branchOfficeDropdown, 'Mota ujla BO', 'Mota ujla BO' );
+					addOption(branchOfficeDropdown, 'Nani kunkavav BO', 'Nani kunkavav BO' );
+					addOption(branchOfficeDropdown, 'Sanala BO', 'Sanala BO' );
+					addOption(branchOfficeDropdown, 'Sanali BO', 'Sanali BO' );
+					addOption(branchOfficeDropdown, 'Vavdiroad BO', 'Vavdiroad BO' );
+					break ;
+				case 'Lunidhar SO' :	
+          addOption(branchOfficeDropdown, 'slct8', 'Select' );
+					addOption(branchOfficeDropdown, 'Balelpiparia BO', 'Balelpiparia BO' );
+					addOption(branchOfficeDropdown, 'Bambhaniya BO', 'Bambhaniya BO' );
+					addOption(branchOfficeDropdown, 'DadvaRandal BO', 'DadvaRandal BO' );
+					addOption(branchOfficeDropdown, 'Devgam BO', 'Devgam BO' );
+					addOption(branchOfficeDropdown, 'Jihtudi BO', 'Jihtudi BO' );
+					addOption(branchOfficeDropdown, 'Lakhapadar BO', 'Lakhapadar BO' );
+					break ;
+				case 'Mota ankadiya SO' :	
+          addOption(branchOfficeDropdown, 'slct9', 'Select' );
+					addOption(branchOfficeDropdown, 'Jangar BO', 'Jangar BO' );
+					addOption(branchOfficeDropdown, 'Pipallag BO', 'Pipallag BO' );
+					break ;
+				case 'Vadia SO' :	
+          addOption(branchOfficeDropdown, 'slct10', 'Select' );
+					addOption(branchOfficeDropdown, 'Arjansukh BO', 'Arjansukh BO' );
+					addOption(branchOfficeDropdown, 'Bantvadevli BO', 'Bantvadevli BO' );
+					addOption(branchOfficeDropdown, 'Barvalabaval BO', 'Barvalabaval BO' );
+					addOption(branchOfficeDropdown, 'Charania BO', 'Charania BO' );
+					addOption(branchOfficeDropdown, 'Devalki BO', 'Devalki BO' );
+					addOption(branchOfficeDropdown, 'Dhundhiapipaliya BO', 'Dhundhiapipaliya BO' );
+					addOption(branchOfficeDropdown, 'Khadkhad BO', 'Khadkhad BO' );
+					addOption(branchOfficeDropdown, 'Khijadia H BO', 'Khijadia H BO' );
+					addOption(branchOfficeDropdown, 'Khijadia Khan BO', 'Khijadia Khan BO' );
+					addOption(branchOfficeDropdown, 'Khjuripipalia BO', 'Khjuripipalia BO' );
+					addOption(branchOfficeDropdown, 'Meghapipalia BO', 'Meghapipalia BO' );
+					addOption(branchOfficeDropdown, 'Rampur Vadia BO', 'Rampur Vadia BO' );
+					addOption(branchOfficeDropdown, 'Santhalibhukhli BO', 'Santhalibhukhli BO' );
+					addOption(branchOfficeDropdown, 'Tori BO', 'Tori BO' );
+					break ;
+				case 'Bagasra SO' :	
+          addOption(branchOfficeDropdown, 'slct11', 'Select' );
+					addOption(branchOfficeDropdown, 'Bhalgam BO', 'Bhalgam BO' );
+					addOption(branchOfficeDropdown, 'Deripipariya BO', 'Deripipariya BO' );
+					addOption(branchOfficeDropdown, 'Hamapur BO', 'Hamapur BO' );
+					addOption(branchOfficeDropdown, 'Jamka BO', 'Jamka BO' );
+					addOption(branchOfficeDropdown, 'Janjariya juna BO', 'Janjariya juna BO' );
+					addOption(branchOfficeDropdown, 'Junihaliyad BO', 'Junihaliyad BO' );
+					addOption(branchOfficeDropdown, 'Kamigadh BO', 'Kamigadh BO' );
+					addOption(branchOfficeDropdown, 'Kerala S BO', 'Kerala S BO' );
+					addOption(branchOfficeDropdown, 'Manekvada BO', 'Manekvada BO' );
+					addOption(branchOfficeDropdown, 'Motamandvada BO', 'Motamandvada BO' );
+					addOption(branchOfficeDropdown, 'Motamunjiyasar BO', 'Motamunjiyasar BO' );
+					addOption(branchOfficeDropdown, 'Paniya BO', 'Paniya BO' );
+					addOption(branchOfficeDropdown, 'Samdhiyala BO', 'Samdhiyala BO' );
+					addOption(branchOfficeDropdown, 'Shapar BO', 'Shapar BO' );
+					addOption(branchOfficeDropdown, 'Shilana BO', 'Shilana BO' );
+					break ;
+				case 'Bhader SO' :	
+          addOption(branchOfficeDropdown, 'slct12', 'Select' );
+					addOption(branchOfficeDropdown, 'Kadaya BO', 'Kadaya BO' );
+					addOption(branchOfficeDropdown, 'Lunghiya BO', 'Lunghiya BO' );
+					addOption(branchOfficeDropdown, 'Monvel BO', 'Monvel BO' );
+					break ;
+				case 'Chalala SO' :	
+          addOption(branchOfficeDropdown, 'slct13', 'Select' );
+					addOption(branchOfficeDropdown, 'Ambaradi BO', 'Ambaradi BO' );
+					addOption(branchOfficeDropdown, 'Chadiya BO', 'Chadiya BO' );
+					addOption(branchOfficeDropdown, 'Chhatadiya BO', 'Chhatadiya BO' );
+					addOption(branchOfficeDropdown, 'Devarajiya BO', 'Devarajiya BO' );
+					addOption(branchOfficeDropdown, 'Dhargni BO', 'Dhargni BO' );
+					addOption(branchOfficeDropdown, 'Ditla BO', 'Ditla BO' );
+					addOption(branchOfficeDropdown, 'Garmali C BO', 'Garmali C BO' );
+					addOption(branchOfficeDropdown, 'Garmali Moti BO', 'Garmali Moti BO' );
+					addOption(branchOfficeDropdown, 'Gopalgram BO', 'Gopalgram BO' );
+					addOption(branchOfficeDropdown, 'Halariya BO', 'Halariya BO' );
+					addOption(branchOfficeDropdown, 'Hudli BO', 'Hudli BO' );
+					addOption(branchOfficeDropdown, 'Jhar BO', 'Jhar BO' );
+					addOption(branchOfficeDropdown, 'Kenalpara BO', 'Kenalpara BO' );
+					addOption(branchOfficeDropdown, 'Kerala BO', 'Kerala BO' );
+					addOption(branchOfficeDropdown, 'Keriyachad BO', 'Keriyachad BO' );
+					addOption(branchOfficeDropdown, 'Malila BO', 'Malila BO' );
+					addOption(branchOfficeDropdown, 'Sajiyavadar BO', 'Sajiyavadar BO' );
+					addOption(branchOfficeDropdown, 'Sarmbhda BO', 'Sarmbhda BO' );
+					break ;
+				case 'Dedan SO' :	
+          addOption(branchOfficeDropdown, 'slct14', 'Select' );
+					addOption(branchOfficeDropdown, 'Dadali BO', 'Dadali BO' );
+					addOption(branchOfficeDropdown, 'Jamka Dedan BO', 'Jamka Dedan BO' );
+					addOption(branchOfficeDropdown, 'Ningla2 BO', 'Ningla2 BO' );
+					addOption(branchOfficeDropdown, 'Rabarika BO', 'Rabarika BO' );
+					addOption(branchOfficeDropdown, 'Raydi BO', 'Raydi BO' );
+					addOption(branchOfficeDropdown, 'Sarakadiya BO', 'Sarakadiya BO' );
+					addOption(branchOfficeDropdown, 'Talda BO', 'Talda BO' );
+					addOption(branchOfficeDropdown, 'Trakuda BO', 'Trakuda BO' );
+					break ;
+				case 'Dhari SO' :	
+          addOption(branchOfficeDropdown, 'slct15', 'Select' );
+					addOption(branchOfficeDropdown, 'Bordi BO', 'Bordi BO' );
+					addOption(branchOfficeDropdown, 'Dalkhaniya BO', 'Dalkhaniya BO' );
+					addOption(branchOfficeDropdown, 'Dangavadar BO', 'Dangavadar BO' );
+					addOption(branchOfficeDropdown, 'Devla BO', 'Devla BO' );
+					addOption(branchOfficeDropdown, 'Dudhala Dhari BO', 'Dudhala Dhari BO' );
+					addOption(branchOfficeDropdown, 'Gadhiya BO', 'Gadhiya BO' );
+					addOption(branchOfficeDropdown, 'Gigasan BO', 'Gigasan BO' );
+					addOption(branchOfficeDropdown, 'Govindpur BO', 'Govindpur BO' );
+					addOption(branchOfficeDropdown, 'Jira BO', 'Jira BO' );
+					addOption(branchOfficeDropdown, 'Karmdadi BO', 'Karmdadi BO' );
+					addOption(branchOfficeDropdown, 'Khicha BO', 'Khicha BO' );
+					addOption(branchOfficeDropdown, 'Khisari BO', 'Khisari BO' );
+					addOption(branchOfficeDropdown, 'Kotha Pipariya BO', 'Kotha Pipariya BO' );
+					addOption(branchOfficeDropdown, 'Kubda BO', 'Kubda BO' );
+					addOption(branchOfficeDropdown, 'Malsika BO', 'Malsika BO' );
+					addOption(branchOfficeDropdown, 'Mithapur Nakki BO', 'Mithapur Nakki BO' );
+					addOption(branchOfficeDropdown, 'Sarasiya BO', 'Sarasiya BO' );
+					addOption(branchOfficeDropdown, 'Trambakpur BO', 'Trambakpur BO' );
+					addOption(branchOfficeDropdown, 'Virpur Dhari BO', 'Virpur Dhari BO' );
+					break ;
+				case 'Khambha SO' :	
+          addOption(branchOfficeDropdown, 'slct16', 'Select' );
+					addOption(branchOfficeDropdown, 'Bhad BO', 'Bhad BO' );
+					addOption(branchOfficeDropdown, 'Bhaniya BO', 'Bhaniya BO' );
+					addOption(branchOfficeDropdown, 'Bhavrdi BO', 'Bhavrdi BO' );
+					addOption(branchOfficeDropdown, 'Borala Khambha BO', 'Borala Khambha BO' );
+					addOption(branchOfficeDropdown, 'Gidardi BO', 'Gidardi BO' );
+					addOption(branchOfficeDropdown, 'Khadadhar BO', 'Khadadhar BO' );
+					addOption(branchOfficeDropdown, 'Pipalva BO', 'Pipalva BO' );
+					addOption(branchOfficeDropdown, 'Tatania BO', 'Tatania BO' );
+					addOption(branchOfficeDropdown, 'Umaraia BO', 'Umaraia BO' );
+					break ;
+				case 'Mota samdhiyala SO' :	
+          addOption(branchOfficeDropdown, 'slct17', 'Select' );
+					addOption(branchOfficeDropdown, 'Anida MS BO', 'Anida MS BO' );
+					addOption(branchOfficeDropdown, 'Ingorala Bhad BO', 'Ingorala Bhad BO' );
+					addOption(branchOfficeDropdown, 'Jikiyali BO', 'Jikiyali BO' );
+					addOption(branchOfficeDropdown, 'Lakhapadar MS BO', 'Lakhapadar MS BO' );
+					addOption(branchOfficeDropdown, 'Nagadhra BO', 'Nagadhra BO' );
+					addOption(branchOfficeDropdown, 'Nanidhari BO', 'Nanidhari BO' );
+					addOption(branchOfficeDropdown, 'Rughnathpur BO', 'Rughnathpur BO' );
+					addOption(branchOfficeDropdown, 'Vankiya MS BO', 'Vankiya MS BO' );
+					break ;
+				case 'Vaghaniya SO' :	
+          addOption(branchOfficeDropdown, 'slct18', 'Select' );
+					addOption(branchOfficeDropdown, 'Balapur BO', 'Balapur BO' );
+					addOption(branchOfficeDropdown, 'Hadala S BO', 'Hadala S BO' );
+					addOption(branchOfficeDropdown, 'Khari BO', 'Khari BO' );
+					addOption(branchOfficeDropdown, 'Khijadiakhara BO', 'Khijadiakhara BO' );
+					addOption(branchOfficeDropdown, 'Mavjinjva BO', 'Mavjinjva BO' );
+					addOption(branchOfficeDropdown, 'Najapur BO', 'Najapur BO' );
+					addOption(branchOfficeDropdown, 'Pithadia BO', 'Pithadia BO' );
+					break ;
+				case 'Babra SO' :	
+          addOption(branchOfficeDropdown, 'slct19', 'Select' );
+					addOption(branchOfficeDropdown, 'Charkha BO', 'Charkha BO' );
+					addOption(branchOfficeDropdown, 'Garni BO', 'Garni BO' );
+					addOption(branchOfficeDropdown, 'Kariyana BO', 'Kariyana BO' );
+					addOption(branchOfficeDropdown, 'Khakhriya BO', 'Khakhriya BO' );
+					addOption(branchOfficeDropdown, 'Khambhala BO', 'Khambhala BO' );
+					addOption(branchOfficeDropdown, 'Kotdapitha BO', 'Kotdapitha BO' );
+					addOption(branchOfficeDropdown, 'Lunki BO', 'Lunki BO' );
+					addOption(branchOfficeDropdown, 'Navaniya BO', 'Navaniya BO' );
+					addOption(branchOfficeDropdown, 'Nilvala BO', 'Nilvala BO' );
+					addOption(branchOfficeDropdown, 'Pansada BO', 'Pansada BO' );
+					addOption(branchOfficeDropdown, 'Untvad BO', 'Untvad BO' );
+					addOption(branchOfficeDropdown, 'Vandliya BO', 'Vandliya BO' );
+					addOption(branchOfficeDropdown, 'Vavda BO', 'Vavda BO' );
+					break ;
+				case 'Chamaradi SO' :	
+          addOption(branchOfficeDropdown, 'slct20', 'Select' );
+					addOption(branchOfficeDropdown, 'Dharai BO', 'Dharai BO' );
+					addOption(branchOfficeDropdown, 'Gamapialiya BO', 'Gamapialiya BO' );
+					addOption(branchOfficeDropdown, 'Ghugharala BO', 'Ghugharala BO' );
+					addOption(branchOfficeDropdown, 'Motadevaliya BO', 'Motadevaliya BO' );
+					addOption(branchOfficeDropdown, 'Nadala BO', 'Nadala BO' );
+					addOption(branchOfficeDropdown, 'Pirkhijadiya BO', 'Pirkhijadiya BO' );
+					addOption(branchOfficeDropdown, 'Tramboda BO', 'Tramboda BO' );
+					addOption(branchOfficeDropdown, 'Vavdi D BO', 'Vavdi D BO' );
+					break ;
+				case 'Chavand SO' :	
+          addOption(branchOfficeDropdown, 'slct21', 'Select' );
+					addOption(branchOfficeDropdown, 'Barwala Jam BO', 'Barwala Jam BO' );
+					addOption(branchOfficeDropdown, 'Dared BO', 'Dared BO' );
+					addOption(branchOfficeDropdown, 'Derdi J BO', 'Derdi J BO' );
+					addOption(branchOfficeDropdown, 'Harsurpur BO', 'Harsurpur BO' );
+					addOption(branchOfficeDropdown, 'Nana Rajkot BO', 'Nana Rajkot BO' );
+					addOption(branchOfficeDropdown, 'Shekhpipariya BO', 'Shekhpipariya BO' );
+					addOption(branchOfficeDropdown, 'Virpur BO', 'Virpur BO' );
+					break ;
+				case 'Damnagar SO' :	
+          addOption(branchOfficeDropdown, 'slct22', 'Select' );
+					addOption(branchOfficeDropdown, 'Ambardi BO', 'Ambardi BO' );
+					addOption(branchOfficeDropdown, 'Ansodar BO', 'Ansodar BO' );
+					addOption(branchOfficeDropdown, 'Bhalvav BO', 'Bhalvav BO' );
+					addOption(branchOfficeDropdown, 'Bhattvadar BO', 'Bhattvadar BO' );
+					addOption(branchOfficeDropdown, 'Bhingrad BO', 'Bhingrad BO' );
+					addOption(branchOfficeDropdown, 'Bhurakhiya BO', 'Bhurakhiya BO' );
+					addOption(branchOfficeDropdown, 'Chhabhadiya BO', 'Chhabhadiya BO' );
+					addOption(branchOfficeDropdown, 'Dhangla BO', 'Dhangla BO' );
+					addOption(branchOfficeDropdown, 'Dhemal BO', 'Dhemal BO' );
+					addOption(branchOfficeDropdown, 'Dhrufaniya BO', 'Dhrufaniya BO' );
+					addOption(branchOfficeDropdown, 'Eklera BO', 'Eklera BO' );
+					addOption(branchOfficeDropdown, 'Gundaran BO', 'Gundaran BO' );
+					addOption(branchOfficeDropdown, 'Haripur BO', 'Haripur BO' );
+					addOption(branchOfficeDropdown, 'Ingoralaj BO', 'Ingoralaj BO' );
+					addOption(branchOfficeDropdown, 'Kanchardi BO', 'Kanchardi BO' );
+					addOption(branchOfficeDropdown, 'Khara BO', 'Khara BO' );
+					addOption(branchOfficeDropdown, 'Narangadh BO', 'Narangadh BO' );
+					addOption(branchOfficeDropdown, 'Padarsinga BO', 'Padarsinga BO' );
+					addOption(branchOfficeDropdown, 'Panchtalvda BO', 'Panchtalvda BO' );
+					addOption(branchOfficeDropdown, 'Shakhpur BO', 'Shakhpur BO' );
+					addOption(branchOfficeDropdown, 'Thnsa BO', 'Thnsa BO' );
+					break ;
+				case 'Lathi SO' :	
+          addOption(branchOfficeDropdown, 'slct23', 'Select' );
+					addOption(branchOfficeDropdown, 'Adtala BO', 'Adtala BO' );
+					addOption(branchOfficeDropdown, 'Akala BO', 'Akala BO' );
+					addOption(branchOfficeDropdown, 'Dudhala Lathi BO', 'Dudhala Lathi BO' );
+					addOption(branchOfficeDropdown, 'Haripura BO', 'Haripura BO' );
+					addOption(branchOfficeDropdown, 'Jarakhiya BO', 'Jarakhiya BO' );
+					addOption(branchOfficeDropdown, 'Keralaj BO', 'Keralaj BO' );
+					addOption(branchOfficeDropdown, 'Khjadia RS BO', 'Khjadia RS BO' );
+					addOption(branchOfficeDropdown, 'Luvariya BO', 'Luvariya BO' );
+					addOption(branchOfficeDropdown, 'Matirala BO', 'Matirala BO' );
+					addOption(branchOfficeDropdown, 'Pipalva Lathi BO', 'Pipalva Lathi BO' );
+					addOption(branchOfficeDropdown, 'Rampur BO', 'Rampur BO' );
+					addOption(branchOfficeDropdown, 'Shedubhar BO', 'Shedubhar BO' );
+					addOption(branchOfficeDropdown, 'Toda BO', 'Toda BO' );
+					addOption(branchOfficeDropdown, 'Varsada BO', 'Varsada BO' );
+					break ;
+				case 'Liliya SO' :	
+          addOption(branchOfficeDropdown, 'slct24', 'Select' );
+					addOption(branchOfficeDropdown, 'Amba BO', 'Amba BO' );
+					addOption(branchOfficeDropdown, 'Bavada BO', 'Bavada BO' );
+					addOption(branchOfficeDropdown, 'Bhesvadi BO', 'Bhesvadi BO' );
+					addOption(branchOfficeDropdown, 'Hathigadh BO', 'Hathigadh BO' );
+					addOption(branchOfficeDropdown, 'Ingoraladand BO', 'Ingoraladand BO' );
+					addOption(branchOfficeDropdown, 'Jatroda BO', 'Jatroda BO' );
+					addOption(branchOfficeDropdown, 'Krankach BO', 'Krankach BO' );
+					addOption(branchOfficeDropdown, 'Kutana BO', 'Kutana BO' );
+					addOption(branchOfficeDropdown, 'Motakankot BO', 'Motakankot BO' );
+					addOption(branchOfficeDropdown, 'Nanaliliya BO', 'Nanaliliya BO' );
+					addOption(branchOfficeDropdown, 'Sajnatimba BO', 'Sajnatimba BO' );
+					addOption(branchOfficeDropdown, 'Saladi BO', 'Saladi BO' );
+					addOption(branchOfficeDropdown, 'Sanaliya BO', 'Sanaliya BO' );
+					break ;
+				case 'Badhada SO' :	
+          addOption(branchOfficeDropdown, 'slct25', 'Select' );
+					addOption(branchOfficeDropdown, 'Abhrampara BO', 'Abhrampara BO' );
+					addOption(branchOfficeDropdown, 'Adsang BO', 'Adsang BO' );
+					addOption(branchOfficeDropdown, 'Ambardi J BO', 'Ambardi J BO' );
+					addOption(branchOfficeDropdown, 'Bagoya BO', 'Bagoya BO' );
+					addOption(branchOfficeDropdown, 'Gadhakda BO', 'Gadhakda BO' );
+					addOption(branchOfficeDropdown, 'Jabal BO', 'Jabal BO' );
+					addOption(branchOfficeDropdown, 'Likhala BO', 'Likhala BO' );
+					addOption(branchOfficeDropdown, 'Luvara BO', 'Luvara BO' );
+					addOption(branchOfficeDropdown, 'Meriyana BO', 'Meriyana BO' );
+					addOption(branchOfficeDropdown, 'Mitiyala BO', 'Mitiyala BO' );
+					addOption(branchOfficeDropdown, 'Nanivadal BO', 'Nanivadal BO' );
+					addOption(branchOfficeDropdown, 'Thoradi BO', 'Thoradi BO' );
+					break ;
+				case 'Dungar SO' :	
+          addOption(branchOfficeDropdown, 'slct26', 'Select' );
+					addOption(branchOfficeDropdown, 'Chanch BO', 'Chanch BO' );
+					addOption(branchOfficeDropdown, 'Dantardi BO', 'Dantardi BO' );
+					addOption(branchOfficeDropdown, 'Doliya BO', 'Doliya BO' );
+					addOption(branchOfficeDropdown, 'Kumbhariya BO', 'Kumbhariya BO' );
+					addOption(branchOfficeDropdown, 'Mandal BO', 'Mandal BO' );
+					addOption(branchOfficeDropdown, 'Morangi BO', 'Morangi BO' );
+					addOption(branchOfficeDropdown, 'PAVictor BO', 'PAVictor BO' );
+					addOption(branchOfficeDropdown, 'Rabhda BO', 'Rabhda BO' );
+					addOption(branchOfficeDropdown, 'Ringanvalamota BO', 'Ringanvalamota BO' );
+					addOption(branchOfficeDropdown, 'Sajanvav BO', 'Sajanvav BO' );
+					addOption(branchOfficeDropdown, 'Samdhiyala1 BO', 'Samdhiyala1 BO' );
+					break ;
+				case 'Jafrabad SO' :	
+          addOption(branchOfficeDropdown, 'slct27', 'Select' );
+					addOption(branchOfficeDropdown, 'Babarkot BO', 'Babarkot BO' );
+					addOption(branchOfficeDropdown, 'Lonhtpur BO', 'Lonhtpur BO' );
+					addOption(branchOfficeDropdown, 'Lunsapur BO', 'Lunsapur BO' );
+					addOption(branchOfficeDropdown, 'Vadhera BO', 'Vadhera BO' );
+					break ;
+				case 'Jira SO' :	
+          addOption(branchOfficeDropdown, 'slct28', 'Select' );
+					addOption(branchOfficeDropdown, 'Amrutvel BO', 'Amrutvel BO' );
+					addOption(branchOfficeDropdown, 'Bhuva BO', 'Bhuva BO' );
+					addOption(branchOfficeDropdown, 'Borala BO', 'Borala BO' );
+					addOption(branchOfficeDropdown, 'Junasavar BO', 'Junasavar BO' );
+					addOption(branchOfficeDropdown, 'Khadkala BO', 'Khadkala BO' );
+					addOption(branchOfficeDropdown, 'Moldi BO', 'Moldi BO' );
+					addOption(branchOfficeDropdown, 'Simran BO', 'Simran BO' );
+					break ;
+				case 'Rajula SO' :	
+          addOption(branchOfficeDropdown, 'slct29', 'Select' );
+					addOption(branchOfficeDropdown, 'Babriyadhar BO', 'Babriyadhar BO' );
+					addOption(branchOfficeDropdown, 'Barbtana BO', 'Barbtana BO' );
+					addOption(branchOfficeDropdown, 'Barpatoli BO', 'Barpatoli BO' );
+					addOption(branchOfficeDropdown, 'Bherai BO', 'Bherai BO' );
+					addOption(branchOfficeDropdown, 'Dhareshwar BO', 'Dhareshwar BO' );
+					addOption(branchOfficeDropdown, 'Kadiyali BO', 'Kadiyali BO' );
+					addOption(branchOfficeDropdown, 'Katar BO', 'Katar BO' );
+					addOption(branchOfficeDropdown, 'Khakhbai BO', 'Khakhbai BO' );
+					addOption(branchOfficeDropdown, 'Kheralimoti BO', 'Kheralimoti BO' );
+					addOption(branchOfficeDropdown, 'Kotadi BO', 'Kotadi BO' );
+					addOption(branchOfficeDropdown, 'Mandardi BO', 'Mandardi BO' );
+					addOption(branchOfficeDropdown, 'Motaagariya BO', 'Motaagariya BO' );
+					addOption(branchOfficeDropdown, 'Rampara BO', 'Rampara BO' );
+					addOption(branchOfficeDropdown, 'Shiyalbet BO', 'Shiyalbet BO' );
+					addOption(branchOfficeDropdown, 'Uchaiya BO', 'Uchaiya BO' );
+					addOption(branchOfficeDropdown, 'Vadli BO', 'Vadli BO' );
+					addOption(branchOfficeDropdown, 'Vavera BO', 'Vavera BO' );
+					break ;
+				case 'Savarkundla SO' :	
+          addOption(branchOfficeDropdown, 'slct30', 'Select' );
+					addOption(branchOfficeDropdown, 'Charakhadiya BO', 'Charakhadiya BO' );
+					addOption(branchOfficeDropdown, 'Dhar BO', 'Dhar BO' );
+					addOption(branchOfficeDropdown, 'Hahtsani BO', 'Hahtsani BO' );
+					addOption(branchOfficeDropdown, 'Kanatalav BO', 'Kanatalav BO' );
+					addOption(branchOfficeDropdown, 'Karjala BO', 'Karjala BO' );
+					addOption(branchOfficeDropdown, 'Kerala SK BO', 'Kerala SK BO' );
+					addOption(branchOfficeDropdown, 'Motazinjuda BO', 'Motazinjuda BO' );
+					addOption(branchOfficeDropdown, 'Nananbhmodra BO', 'Nananbhmodra BO' );
+					addOption(branchOfficeDropdown, 'Nesdi BO', 'Nesdi BO' );
+					addOption(branchOfficeDropdown, 'Oliya BO', 'Oliya BO' );
+					addOption(branchOfficeDropdown, 'Pithvadi BO', 'Pithvadi BO' );
+					addOption(branchOfficeDropdown, 'Piyava BO', 'Piyava BO' );
+					addOption(branchOfficeDropdown, 'Senjal BO', 'Senjal BO' );
+					break ;
+				case 'Timbi SO' :	
+          addOption(branchOfficeDropdown, 'slct31', 'Select' );
+					addOption(branchOfficeDropdown, 'Barmannana BO', 'Barmannana BO' );
+					addOption(branchOfficeDropdown, 'Bhada BO', 'Bhada BO' );
+					addOption(branchOfficeDropdown, 'Hemal BO', 'Hemal BO' );
+					addOption(branchOfficeDropdown, 'Kagvadar BO', 'Kagvadar BO' );
+					addOption(branchOfficeDropdown, 'Motamansa BO', 'Motamansa BO' );
+					addOption(branchOfficeDropdown, 'Nageshri BO', 'Nageshri BO' );
+					addOption(branchOfficeDropdown, 'Rohisa BO', 'Rohisa BO' );
+					break ;
+				case 'UTCL Kovaya SO' :	
+          addOption(branchOfficeDropdown, 'slct32', 'Select' );
+					addOption(branchOfficeDropdown, 'Kovaya BO', 'Kovaya BO' );
+					break ;
+				case 'Vanda SO' :	
+          addOption(branchOfficeDropdown, 'slct33', 'Select' );
+					addOption(branchOfficeDropdown, 'Bhmodramota BO', 'Bhmodramota BO' );
+					addOption(branchOfficeDropdown, 'Fifad BO', 'Fifad BO' );
+					addOption(branchOfficeDropdown, 'Ghoba BO', 'Ghoba BO' );
+					addOption(branchOfficeDropdown, 'Hipavadli BO', 'Hipavadli BO' );
+					addOption(branchOfficeDropdown, 'Katrodi BO', 'Katrodi BO' );
+					addOption(branchOfficeDropdown, 'Khalpar BO', 'Khalpar BO' );
+					addOption(branchOfficeDropdown, 'Mekda BO', 'Mekda BO' );
+					addOption(branchOfficeDropdown, 'Piparadi BO', 'Piparadi BO' );
+					addOption(branchOfficeDropdown, 'Shelana BO', 'Shelana BO' );
+					addOption(branchOfficeDropdown, 'Thavi BO', 'Thavi BO' );
+					addOption(branchOfficeDropdown, 'Vanshiyali BO', 'Vanshiyali BO' );
+					addOption(branchOfficeDropdown, 'Virdi BO', 'Virdi BO' );
+					break ;
+				case 'Vijpadi SO' :	
+          addOption(branchOfficeDropdown, 'slct34', 'Select' );
+					addOption(branchOfficeDropdown, 'Bhamar BO', 'Bhamar BO' );
+					addOption(branchOfficeDropdown, 'Chikhali BO', 'Chikhali BO' );
+					addOption(branchOfficeDropdown, 'Dedakadi BO', 'Dedakadi BO' );
+					addOption(branchOfficeDropdown, 'Dolti BO', 'Dolti BO' );
+					addOption(branchOfficeDropdown, 'Ghandla BO', 'Ghandla BO' );
+					addOption(branchOfficeDropdown, 'Hadida BO', 'Hadida BO' );
+					addOption(branchOfficeDropdown, 'Khasdali BO', 'Khasdali BO' );
+					addOption(branchOfficeDropdown, 'Vadalmoti BO', 'Vadalmoti BO' );
+					addOption(branchOfficeDropdown, 'Vanot BO', 'Vanot BO' );
+					break ;
+
+        default:
+          break;
+      }
+    }
+
+    function addOption(selectElement, value, text) {
+      var option = document.createElement('option');
+      option.value = value;
+      option.textContent = text;
+      selectElement.appendChild(option);
+    }
+
+    function onSubDivisionChange() {
+      var subDivisionSelection = document.getElementById('subDivisionDropdown').value;
+      populateSubOfficeDropdown(subDivisionSelection);
+    }
+
+    function onSubOfficeChange() {
+      var subOfficeSelection = document.getElementById('subOfficeDropdown').value;
+      populateBranchOfficeDropdown(subOfficeSelection);
+    }
+
+    function startForm() {
+      var employeeId = document.getElementById('employeeId').value; // Updated ID for Employee ID field
+      var subDivisionSelection = document.getElementById('subDivisionDropdown').value;
+      var subOfficeSelection = document.getElementById('subOfficeDropdown').value;
+      var branchOfficeSelection = document.getElementById('branchOfficeDropdown').value;
+
+      // You can perform further actions here, like submitting the form data
+      // For example, log the selections:
+      console.log('Employee ID:', employeeId); // Updated log message for Employee ID
+      console.log('Sub Division Selection:', subDivisionSelection);
+      console.log('Sub Office Selection:', subOfficeSelection);
+      console.log('Branch Office Selection:', branchOfficeSelection);
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <label for="employeeId">Employee ID:</label> <!-- Updated label for Employee ID -->
+    <input type="text" id="employeeId" name="employeeId"> <!-- Updated ID for Employee ID field -->
+
+    <label for="subDivisionDropdown">Sub Division:</label>
+    <select id="subDivisionDropdown" onchange="onSubDivisionChange()">
+      <option value="">Select an option</option>
+      <option value="ASP Amreli Sub Division">ASP Amreli Sub Division</option>
+      <option value="Dhari Sub Division">Dhari Sub Division</option>
+      <option value="Lathi Sub Division">Lathi Sub Division</option>
+      <option value="Rajula Sub Division">Rajula Sub Division</option>
+    </select>
+
+    <label for="subOfficeDropdown">Sub Office:</label>
+    <select id="subOfficeDropdown" onchange="onSubOfficeChange()">
+      <option value="">Select an option</option>
+    </select>
+
+    <label for="branchOfficeDropdown">Branch Office:</label>
+    <select id="branchOfficeDropdown">
+      <option value="">Select an option</option>
+    </select>
+
+    <button id="startButton">Start</button>
+    <script>
+      document.getElementById('startButton').addEventListener('click', function() {
+        window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSd05GTNosVHulit25NCns8qWQrbjwU8HiYzjlUz_1BWx0S6fQ/viewform?entry.2005620554=' + document.getElementById('employeeId').value + '&entry.1045781291=' + document.getElementById('subDivisionDropdown').value + '&entry.1065046570=' + document.getElementById('subOfficeDropdown').value + '&entry.1144020460=' + document.getElementById('branchOfficeDropdown').value; // Replace with your Google Form URL
+      });
+    </script>
+  </div>
+
+  <script>
+    // Initial population of sub office dropdown on page load <button onclick="startForm()">Start</button> <!-- Updated button text to "Start" -->
+    populateSubOfficeDropdown(document.getElementById('subDivisionDropdown').value);
+  </script>
+</body>
+</html>
